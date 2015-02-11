@@ -25,6 +25,15 @@ public class IntentReaderActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_intent_reader);
+		Intent intent =getIntent();
+		mode =intent.getIntExtra(TRANSFORM_KEY, NORMAL);
+		String in=intent.getStringExtra(TEXT_KEY);
+		if (in==null){
+			in="Defalt";
+		}
+		text =transformText(in);
+		TextView textView=(TextView) findViewById(R.id.intentText);
+		textView.setText(text);
 	}
 	
 	public String transformText(String text) {
